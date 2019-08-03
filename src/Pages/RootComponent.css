@@ -1,0 +1,19 @@
+.RootComponent {
+  --header: 100px;
+  display: flex;
+  flex-direction: column;
+  /* overflow: hidden; */
+}
+
+Header {
+  height: var(--header);
+}
+
+.MainContainer {
+  height: calc(100vh - var(--header));
+  overflow: auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

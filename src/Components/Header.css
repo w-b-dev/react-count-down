@@ -1,0 +1,7 @@
+header {
+  z-index: 10;
+  padding: 1rem;
+  background-color: #444;
+  color: whitesmoke;
+  box-shadow: 0 0 4px black;
+}

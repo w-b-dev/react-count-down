@@ -1,0 +1,29 @@
+* {
+  --header: 100px;
+  box-sizing: border-box;
+  user-select: none;
+  transition-delay:0;
+  transition-duration: 200ms;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+body {
+  margin: 0;
+  background-color: #222;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#root {
+  height: 100vh;
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  max-height: calc(90vh - var(--header));
+}
+
+img:active {
+  transform: rotate3d(0, 1, 0, 180deg)
+}
