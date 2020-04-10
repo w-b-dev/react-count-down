@@ -1,5 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+:root {
+  --main-bg-color: #0D0C45;
+  --main-txt-color: #FF72A0;
+  --main-padding: 15px;
+}
+
 .App {
-  text-align: center;
+  min-height: inherit;
+  border: 1px solid var(--main-txt-color);
+  background-color: var(--main-bg-color);
+  color: var(--main-txt-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.display {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+  font-size: 32px;
+  font-family: 'Lobster', cursive;
 }
 
 @media (prefers-reduced-motion: no-preference) {
