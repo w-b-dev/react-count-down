@@ -1,0 +1,15 @@
+.display {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+    font-size: 32px;
+    font-family: 'Lobster', cursive;
+}
+
+@media all and (min-width: 1024px){
+    .display {
+        font-size: 64px;
+    }
+}

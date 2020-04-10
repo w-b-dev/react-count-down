@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css';
+import Display from "./components/Display";
+import SetDate from "./components/SetDate";
 
 function App() {
+
+    const targetDate = "Jan 17, 2021 12:34:56";
+
   return (
     <div className="App">
-      <section className="display" title="countdown display">
-Tuesday 5pm
-      </section>
+      <Display targetDate={targetDate} />
+      <SetDate targetDate={targetDate}/>
     </div>
   );
 }

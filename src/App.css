@@ -12,22 +12,15 @@
   background-color: var(--main-bg-color);
   color: var(--main-txt-color);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.display {
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
-  font-size: 32px;
-  font-family: 'Lobster', cursive;
-}
-
 @media all and (min-width: 1024px){
-  .display {
-    font-size: 64px;
-  }
+/*  mq placeholder*/
 }
 
 @media (prefers-reduced-motion: no-preference) {
-/*  animation*/
+/*  animation placeholder */
 }
