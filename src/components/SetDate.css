@@ -1,5 +1,24 @@
 .setDate {
-    color: lightgray;
     margin-left: auto;
-    font-size: x-small;
+}
+
+.dateAsButton, .dateInput {
+    min-width: 33vw;
+    background-color: transparent;
+    border: none;
+}
+
+.dateAsButton {
+    cursor: pointer;
+    color: lightgray;
+}
+
+.dateAsButton:hover {
+    color: black;
+    background-color: pink;
+}
+
+.dateInput {
+    text-align: center;
+    color: inherit;
 }
