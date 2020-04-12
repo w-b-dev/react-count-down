@@ -1,9 +1,6 @@
 import React from 'react';
 import './Display.css';
-
-interface DisplayProps {
-  targetDate: string;
-}
+import { DisplayProps } from './interfaces';
 
 const Display = ({ targetDate }: DisplayProps) => {
   const countDownDate = new Date(targetDate).getTime();
