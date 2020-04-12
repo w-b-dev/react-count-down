@@ -3,7 +3,7 @@
 }
 
 .dateAsButton, .dateInput {
-    min-width: 33vw;
+    min-width: fit-content;
     background-color: transparent;
     border: none;
 }
