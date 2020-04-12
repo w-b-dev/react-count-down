@@ -11,7 +11,7 @@ const mockState: DateType = {
 };
 
 function App() {
-  const TIME = '12:34:56';
+  const TIME = '23:59:59';
   const createDate = (d: DateType) => `${d.month} ${d.day}, ${d.year} ${TIME}`;
   const [state, setState] = useState<StateType>({
     dateMonthYear: mockState,

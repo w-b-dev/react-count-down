@@ -8,9 +8,21 @@ const Display = ({ dateState }: DisplayProps) => {
   const now = new Date().getTime();
   let timeGap = Math.floor((countDownDate - now) / oneDayInMs);
 
+  const decideMessage = () => {
+    return timeGap > 0
+      ? 'days to go'
+      : timeGap < 0
+      ? 'days have passed'
+      : 'days - today is THE day!!';
+  };
+
+  const message = decideMessage();
+
   return (
     <section className="display" title="countdown display">
-      <span>{timeGap.toString()} days to go</span>
+      <span>
+        {timeGap.toString()} {message}
+      </span>
     </section>
   );
 };
