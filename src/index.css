@@ -2,7 +2,7 @@
 
 * {
     box-sizing: border-box;
-    font-family: 'Lobster', cursive;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 body {
@@ -14,10 +14,9 @@ body {
     min-height: 100vh;
 }
 
-input {
+input, select {
     font-size: 1rem;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 300;
+    /*font-weight: 300;*/
     padding: 4px;
 }
 

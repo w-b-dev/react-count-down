@@ -1,0 +1,37 @@
+.setDate {
+    margin-left: auto;
+}
+
+.dateAsButton, .dateInput {
+    min-width: 33vw;
+    background-color: transparent;
+    border: none;
+}
+
+.dateAsButton {
+    cursor: pointer;
+    color: lightgray;
+}
+
+.dateAsButton:hover {
+    color: #FF72A0;
+}
+
+.dateInput {
+    text-align: center;
+    color: inherit;
+}
+
+.inputControls {
+    display: flex;
+}
+
+.inputControls select, .inputControls input[type="button"] {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #FF72A0;
+}
+.inputControls input[type="button"] {
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.3);
+}

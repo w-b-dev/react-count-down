@@ -1,18 +1,31 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Display from './components/Display';
-import SetDate from './components/SetDate';
+import DateControl from './components/DateControl';
+import { DateType, StateType } from './components/interfaces';
+
+const mockState: DateType = {
+  day: '27',
+  month: 'Jun',
+  year: '2020',
+};
 
 function App() {
-  const dateInput = 'Jan 17, 2021 12:34:56';
-  const [date, setDate] = useState(dateInput);
-  const handleUpdate = (e: string) => {
-    setDate(e);
+  const TIME = '12:34:56';
+  const createDate = (d: DateType) => `${d.month} ${d.day}, ${d.year} ${TIME}`;
+  const [state, setState] = useState<StateType>({
+    dateMonthYear: mockState,
+    dateString: createDate(mockState),
+  });
+  const handleUpdate = (t: DateType) => {
+    const received = { ...t };
+    setState({ dateString: createDate(received), dateMonthYear: received });
   };
+
   return (
     <div className="App">
-      <Display targetDate={date} onUpdate={handleUpdate} />
-      <SetDate targetDate={date} onUpdate={handleUpdate} />
+      <Display dateState={state} onUpdate={handleUpdate} />
+      <DateControl dateState={state} onUpdate={handleUpdate} />
     </div>
   );
 }
