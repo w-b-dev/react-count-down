@@ -1,5 +1,4 @@
 .display {
-    font-family: 'Lobster', cursive;
     flex: 1;
     display: flex;
     justify-content: center;
@@ -10,6 +9,7 @@
 
 .display > span {
     font-family: 'Lobster', cursive;
+    text-align: center;
 }
 
 @media all and (min-width: 1024px){
