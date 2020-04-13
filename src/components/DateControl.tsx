@@ -1,6 +1,6 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import './DateControl.css';
-import { DateType, DisplayProps } from './interfaces';
+import { DisplayProps } from './interfaces';
 
 const DateControl = ({ dateState, onUpdate }: DisplayProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,22 +25,22 @@ const DateControl = ({ dateState, onUpdate }: DisplayProps) => {
 };
 
 const DateSegments = ({ dateState, onUpdate, onClose }: DisplayProps) => {
-  const [day, setDay] = useState<string>(dateState.dateMonthYear.day);
-  const [month, setMonth] = useState<string>(dateState.dateMonthYear.month);
-  const [year, setYear] = useState<string>(dateState.dateMonthYear.year);
-
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    if (e.target.name === 'day') setDay(e.target.value);
-    if (e.target.name === 'month') setMonth(e.target.value);
-    if (e.target.name === 'year') setYear(e.target.value);
+    onUpdate({
+      day:
+        e.target.name === 'day' ? e.target.value : dateState.dateMonthYear.day,
+      month:
+        e.target.name === 'month'
+          ? e.target.value
+          : dateState.dateMonthYear.month,
+      year:
+        e.target.name === 'year'
+          ? e.target.value
+          : dateState.dateMonthYear.year,
+    });
   };
 
   const handleClick = () => (onClose ? onClose() : null);
-
-  useEffect(() => {
-    const s: DateType = { day, month, year };
-    onUpdate(s);
-  }, [day, month, year]);
 
   const renderNumberedSlots = (
     size: number,
@@ -77,19 +77,29 @@ const DateSegments = ({ dateState, onUpdate, onClose }: DisplayProps) => {
 
   return (
     <section className="inputControls">
-      <select name="day" id="day" onChange={handleChange} defaultValue={day}>
-        {renderNumberedSlots(31, day, 1)}
+      <select
+        name="day"
+        id="day"
+        onChange={handleChange}
+        defaultValue={dateState.dateMonthYear.day}
+      >
+        {renderNumberedSlots(31, dateState.dateMonthYear.day, 1)}
       </select>
       <select
         name="month"
         id="month"
         onChange={handleChange}
-        defaultValue={month}
+        defaultValue={dateState.dateMonthYear.month}
       >
-        {renderNumberedSlots(12, day, 1, YEARS_LIST)}
+        {renderNumberedSlots(12, dateState.dateMonthYear.day, 1, YEARS_LIST)}
       </select>
-      <select name="year" id="year" onChange={handleChange} defaultValue={year}>
-        {renderNumberedSlots(2, year, 2020)}
+      <select
+        name="year"
+        id="year"
+        onChange={handleChange}
+        defaultValue={dateState.dateMonthYear.year}
+      >
+        {renderNumberedSlots(2, dateState.dateMonthYear.year, 2020)}
       </select>
       <input type="button" value="update" onClick={handleClick} />
     </section>
