@@ -23,7 +23,7 @@ function App() {
     setState({
       dateString: createDate(received),
       dateMonthYear: received,
-      editMode: false,
+      editMode: state.editMode,
     });
   };
 
