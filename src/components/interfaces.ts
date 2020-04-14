@@ -1,7 +1,14 @@
-export interface DisplayProps {
+export interface BaseDateProps {
   dateState: StateType;
   onUpdate: (d: DateType) => void;
-  onClose?: () => void;
+}
+
+export interface DisplayProps extends BaseDateProps {
+  onClick: () => void;
+}
+
+export interface DateSegmentsProps extends BaseDateProps {
+  onClose: () => void;
 }
 
 export type DateType = {
@@ -13,4 +20,5 @@ export type DateType = {
 export type StateType = {
   dateMonthYear: DateType;
   dateString: string;
+  editMode: boolean;
 };

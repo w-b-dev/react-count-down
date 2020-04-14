@@ -16,16 +16,36 @@ function App() {
   const [state, setState] = useState<StateType>({
     dateMonthYear: mockState,
     dateString: createDate(mockState),
+    editMode: false,
   });
   const handleUpdate = (t: DateType) => {
     const received = { ...t };
-    setState({ dateString: createDate(received), dateMonthYear: received });
+    setState({
+      dateString: createDate(received),
+      dateMonthYear: received,
+      editMode: false,
+    });
+  };
+
+  const handleClick = () => {
+    setState({ ...state, editMode: !state.editMode });
   };
 
   return (
     <div className="App">
-      <Display dateState={state} onUpdate={handleUpdate} />
-      <DateControl dateState={state} onUpdate={handleUpdate} />
+      {state.editMode ? (
+        <DateControl
+          dateState={state}
+          onUpdate={handleUpdate}
+          onClose={handleClick}
+        />
+      ) : (
+        <Display
+          dateState={state}
+          onUpdate={handleUpdate}
+          onClick={handleClick}
+        />
+      )}
     </div>
   );
 }

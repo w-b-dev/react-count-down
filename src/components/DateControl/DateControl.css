@@ -1,5 +1,5 @@
-.setDate {
-    margin-left: auto;
+.setDate select {
+    font-size: 1.25em;
 }
 
 .dateAsButton, .dateInput {
@@ -27,11 +27,11 @@
 }
 
 .inputControls select, .inputControls input[type="button"] {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
     border: none;
     color: #FF72A0;
 }
 .inputControls input[type="button"] {
     font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.15);
 }
