@@ -2,7 +2,7 @@ import React from 'react';
 import './Display.css';
 import { DisplayProps } from '../interfaces';
 
-const Display = ({ dateState }: DisplayProps) => {
+const Display = ({ dateState, onClick }: DisplayProps) => {
   const countDownDate = new Date(dateState.dateString).getTime();
   const oneDayInMs = 1000 * 60 * 60 * 24;
   const now = new Date().getTime();
@@ -15,7 +15,7 @@ const Display = ({ dateState }: DisplayProps) => {
   const message = decideMessage();
 
   return (
-    <section className="display" title="countdown display">
+    <section className="display" title="countdown display" onClick={onClick}>
       {timeGap === 0 && <span>Today is the day!!!</span>}
 
       {timeGap !== 0 && (
