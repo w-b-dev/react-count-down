@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import Display from './components/Display';
-import DateControl from './components/DateControl';
 import { DateType, StateType } from './components/interfaces';
+import Card from './components/Card';
 
 const mockState: DateType = {
   day: '27',
@@ -33,19 +32,11 @@ function App() {
 
   return (
     <div className="App">
-      {state.editMode ? (
-        <DateControl
-          dateState={state}
-          onUpdate={handleUpdate}
-          onClose={handleClick}
-        />
-      ) : (
-        <Display
-          dateState={state}
-          onUpdate={handleUpdate}
-          onClick={handleClick}
-        />
-      )}
+      <Card
+        state={state}
+        handleUpdate={handleUpdate}
+        handleClick={handleClick}
+      />
     </div>
   );
 }

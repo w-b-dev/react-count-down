@@ -11,6 +11,12 @@ export interface DateSegmentsProps extends BaseDateProps {
   onClose: () => void;
 }
 
+export interface CardProps {
+  state: StateType;
+  handleUpdate: (t: DateType) => void;
+  handleClick: () => void;
+}
+
 export type DateType = {
   day: string;
   month: string;
