@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import './DateControl.css';
-import { DisplayProps } from './interfaces';
+import { DisplayProps } from '../interfaces';
 
 const DateControl = ({ dateState, onUpdate }: DisplayProps) => {
   const [isOpen, setIsOpen] = useState(false);
