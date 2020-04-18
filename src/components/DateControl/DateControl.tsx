@@ -1,25 +1,31 @@
 import React, { ChangeEvent } from 'react';
 import './DateControl.css';
-import { DateSegmentsProps } from '../interfaces';
+import { CardProps } from '../interfaces';
 
-const DateControl = ({ dateState, onUpdate, onClose }: DateSegmentsProps) => {
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    onUpdate({
-      day:
-        e.target.name === 'day' ? e.target.value : dateState.dateMonthYear.day,
-      month:
-        e.target.name === 'month'
-          ? e.target.value
-          : dateState.dateMonthYear.month,
-      year:
-        e.target.name === 'year'
-          ? e.target.value
-          : dateState.dateMonthYear.year,
-    });
+const DateControl = ({ cardState, handleClick }: CardProps) => {
+  const _handleClick = () => {
+    const newState = { ...cardState };
+    newState.editMode = false;
+    handleClick(newState);
   };
-
-  const handleClick = () => {
-    onClose();
+  const _handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const newState = { ...cardState };
+    const target = e.target;
+    const change = target.getAttribute('name');
+    switch (change) {
+      case 'day':
+        newState.day = target.value;
+        break;
+      case 'month':
+        newState.month = target.value;
+        break;
+      case 'year':
+        newState.year = target.value;
+        break;
+      default:
+        break;
+    }
+    handleClick(newState);
   };
 
   const renderNumberedSlots = (
@@ -56,42 +62,36 @@ const DateControl = ({ dateState, onUpdate, onClose }: DateSegmentsProps) => {
   ];
 
   return (
-    <footer className="setDate" title="countdown input section">
-      {/*<DateSegments dateState={dateState} onUpdate={onUpdate} />*/}
-      <section className="inputControls">
+    <section className="DateControls" title="countdown input section">
+      <form className="inputControls">
         <select
           name="day"
           id="day"
-          onChange={handleChange}
-          defaultValue={dateState.dateMonthYear.day}
+          onChange={_handleChange}
+          defaultValue={cardState.day}
         >
-          {renderNumberedSlots(31, dateState.dateMonthYear.day, 1)}
+          {renderNumberedSlots(31, cardState.day, 1)}
         </select>
         <select
           name="month"
           id="month"
-          onChange={handleChange}
-          defaultValue={dateState.dateMonthYear.month}
+          onChange={_handleChange}
+          defaultValue={cardState.month}
         >
-          {renderNumberedSlots(12, dateState.dateMonthYear.day, 1, YEARS_LIST)}
+          {renderNumberedSlots(12, cardState.day, 1, YEARS_LIST)}
         </select>
         <select
           name="year"
           id="year"
-          onChange={handleChange}
-          defaultValue={dateState.dateMonthYear.year}
+          onChange={_handleChange}
+          defaultValue={cardState.year}
         >
-          {renderNumberedSlots(2, dateState.dateMonthYear.year, 2020)}
+          {renderNumberedSlots(2, cardState.year, 2020)}
         </select>
-        <input type="button" value="update" onClick={handleClick} />
-      </section>
-    </footer>
+        <input type="button" value="update" onClick={_handleClick} />
+      </form>
+    </section>
   );
 };
-
-// const DateSegments = ({ dateState, onUpdate, onClose }: DateSegmentsProps) => {
-//   return (
-//   );
-// };
 
 export default DateControl;
