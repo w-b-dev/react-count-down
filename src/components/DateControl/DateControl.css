@@ -4,10 +4,14 @@
     justify-content: center;
     align-items: center;
 /* try matching 3rem for Display height*/
-    min-height: 60px;
+/*    min-height: 60px;*/
 }
-.DateControls select {
-    font-size: 1.75em;
+.DateControls select{
+    font-size: 1.5em;
+}
+
+.DateControls input  {
+    font-size: 1.25em;
 }
 
 .dateAsButton, .dateInput {
@@ -35,11 +39,12 @@
 }
 
 .inputControls select, .inputControls input[type="button"] {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.8);
     border: none;
     color: #FF72A0;
 }
 .inputControls input[type="button"] {
     font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 1);
+    padding: 0 1rem;
 }

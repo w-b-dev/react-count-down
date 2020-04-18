@@ -1,23 +1,29 @@
 .Card {
-    width: 100vw;
-    padding: 1rem 5%;
-    border-bottom: 2px solid hotpink;
-}
-
-.Card .Display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
     transition-duration: 200ms;
     transition-property: all;
     transition-timing-function: ease-out;
+    padding: 1rem;
+    border-bottom: 2px solid hotpink;
 }
 
-.Card .Display:hover {
+.Card:hover {
     background-color: deeppink;
     color: white;
     box-shadow: 0 0 10px black;
 }
 
+.Card > * {
+    min-height: 30vh;
+}
+
 @media all and (min-width: 1024px){
     .Card {
         max-width: 640px;
+        border-bottom: 0.5rem solid hotpink;
     }
 }
