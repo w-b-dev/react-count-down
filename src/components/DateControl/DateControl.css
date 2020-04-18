@@ -1,5 +1,13 @@
-.setDate select {
-    font-size: 1.25em;
+.DateControls {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+/* try matching 3rem for Display height*/
+    min-height: 60px;
+}
+.DateControls select {
+    font-size: 1.75em;
 }
 
 .dateAsButton, .dateInput {

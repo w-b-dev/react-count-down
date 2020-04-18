@@ -1,30 +1,26 @@
-export interface BaseDateProps {
-  dateState: StateType;
-  onUpdate: (d: DateType) => void;
-}
-
-export interface DisplayProps extends BaseDateProps {
-  onClick: () => void;
-}
-
-export interface DateSegmentsProps extends BaseDateProps {
-  onClose: () => void;
-}
-
 export interface CardProps {
-  state: StateType;
-  handleUpdate: (t: DateType) => void;
-  handleClick: () => void;
+  cardState: CardType;
+  handleClick: (cardState: CardType) => void;
 }
 
-export type DateType = {
+export type CardType = {
+  id: string;
+  title: string;
   day: string;
   month: string;
   year: string;
+  dateString: string;
+  editMode: boolean;
+};
+
+export type CardsType = CardType[];
+
+export type State = {
+  state: StateType;
+  updateState: (s: StateType) => void;
 };
 
 export type StateType = {
-  dateMonthYear: DateType;
-  dateString: string;
-  editMode: boolean;
+  items: CardsType;
+  selectedItem: string | null;
 };

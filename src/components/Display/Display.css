@@ -1,4 +1,6 @@
-.display {
+.Display {
+    user-select: none;
+    cursor: pointer;
     flex: 1;
     display: flex;
     justify-content: center;
@@ -7,13 +9,13 @@
     font-size: 3rem;
 }
 
-.display > span {
+.Display > span {
     font-family: 'Lobster', cursive;
     text-align: center;
 }
 
 @media all and (min-width: 1024px){
-    .display {
+    .Display {
         font-size: 5rem;
     }
 }
