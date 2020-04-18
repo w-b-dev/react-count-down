@@ -1,9 +1,7 @@
 .Card {
-    width: 40%;
-    min-width: 320px;
-    margin: 0 5%;
-    padding: 1rem;
-border-bottom: 2px solid hotpink;
+    width: 100vw;
+    padding: 1rem 5%;
+    border-bottom: 2px solid hotpink;
 }
 
 .Card .Display {
@@ -11,8 +9,15 @@ border-bottom: 2px solid hotpink;
     transition-property: all;
     transition-timing-function: ease-out;
 }
+
 .Card .Display:hover {
     background-color: deeppink;
     color: white;
     box-shadow: 0 0 10px black;
+}
+
+@media all and (min-width: 1024px){
+    .Card {
+        max-width: 640px;
+    }
 }
