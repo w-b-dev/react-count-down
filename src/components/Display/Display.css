@@ -11,6 +11,8 @@
 }
 .Display > .title {
     font-family: 'Lobster', cursive;
+    line-height: 3rem;
+    padding-bottom: 1rem;
 }
 .Display > .countdown-message {
     text-align: center;
@@ -19,6 +21,10 @@
 
 @media all and (min-width: 1024px){
     .Display {
-        font-size: 5rem;
+        font-size: 4rem;
+    }
+
+    .Display > .title {
+        line-height: 4rem;
     }
 }

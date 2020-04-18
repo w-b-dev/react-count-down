@@ -88,7 +88,7 @@ const DateControl = ({ cardState, handleClick }: CardProps) => {
         >
           {renderNumberedSlots(2, cardState.year, 2020)}
         </select>
-        <input type="button" value="update" onClick={_handleClick} />
+        <input type="button" value="Save" onClick={_handleClick} />
       </form>
     </section>
   );
