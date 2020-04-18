@@ -30,13 +30,13 @@ const Display = ({ cardState, handleClick }: CardProps) => {
       title="countdown display"
       onClick={_handleClick}
     >
-      {timeGap === 0 && <span>Today is the day!!!</span>}
+      <div className="title">{cardState.title}</div>
 
-      {timeGap !== 0 && (
-        <span>
-          {timeGap.toString()} {message}
-        </span>
-      )}
+      <div className="countdown-message">
+        {timeGap === 0
+          ? 'Today is the day!!!'
+          : `${timeGap.toString()} ${message}`}
+      </div>
     </section>
   );
 };
