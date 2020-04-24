@@ -15,13 +15,22 @@ const CardsGrid = ({ state, updateState }: State): any => {
         e.id !== cardState.id ? (e.editMode = false) : null
       );
     }
-    const mapped = _state.items.map((e) => {
+    /*Let's delete an entry*/
+    let deletedEl = -1;
+    const mapped = _state.items.map((e, i) => {
       if (e.id === cardState.id) {
-        return cardState;
-      } else {
-        return e;
+        if (cardState.title === 'DELETE') {
+          deletedEl = i;
+        } else {
+          return cardState;
+        }
       }
+
+      return e;
     });
+    if (deletedEl !== -1) {
+      mapped.splice(deletedEl, 1);
+    }
     _state.items = mapped;
     updateState(_state);
   };
