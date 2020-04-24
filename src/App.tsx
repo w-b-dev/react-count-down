@@ -3,6 +3,7 @@ import './App.css';
 import { CardType, CardsType, StateType } from './components/interfaces';
 import CardsGrid from './components/CardsGrid';
 
+const emptyState = { items: [], selectedItem: null };
 const mockResponse: CardsType = [
   {
     id: '8912830912830',
@@ -108,23 +109,28 @@ const TIME = '23:59:59';
 
 export const createDate = (d: CardType) =>
   `${d.month} ${d.day}, ${d.year} ${TIME}`;
-
 const runCreateDate = (state: StateType) => {
-  const newState = { ...state };
-  // include in the state a locally computed value
-  newState.items.forEach((e) => (e.dateString = createDate(e)));
-  return newState;
+  state.items.forEach((e) =>
+    e.dateString === '' ? (e.dateString = createDate(e)) : null
+  );
+  return state;
 };
 
 function App() {
-  const [state, setState] = useState<StateType>({
-    items: mockResponse,
-    selectedItem: null,
-  });
-
+  const getInitialState = () => {
+    return JSON.parse(window.localStorage.getItem('state')!) || emptyState;
+  };
+  const [state, setState] = useState<StateType>(getInitialState);
+  if (state === emptyState) {
+    console.info('FIRST STATE RUN');
+    const newState = { ...emptyState, items: mockResponse };
+    setState(runCreateDate(newState));
+    window.localStorage.setItem('state', JSON.stringify(newState));
+  }
   useEffect(() => {
-    setState((state) => runCreateDate(state));
-  }, [state.selectedItem]);
+    window.localStorage.setItem('state', JSON.stringify(state));
+    setState(runCreateDate(state));
+  }, [state]);
 
   const updateState = (e: StateType) => {
     setState(e);

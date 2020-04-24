@@ -25,9 +25,12 @@ const CardsGrid = ({ state, updateState }: State): any => {
     _state.items = mapped;
     updateState(_state);
   };
-  const renderCards = state.items.map((e) => {
-    return <Card key={e.id} cardState={e} handleClick={handleUpdate} />;
-  });
+  const renderCards =
+    state && state.items
+      ? state.items.map((e) => {
+          return <Card key={e.id} cardState={e} handleClick={handleUpdate} />;
+        })
+      : null;
   return <div className="CardsGrid">{renderCards}</div>;
 };
 export default CardsGrid;
