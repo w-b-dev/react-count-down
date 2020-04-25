@@ -12,28 +12,9 @@
     font-size: 1.25em;
 }
 
-/*.dateAsButton, .dateInput {*/
-/*    min-width: fit-content;*/
-/*    background-color: transparent;*/
-/*    border: none;*/
-/*}*/
-
-/*.dateAsButton {*/
-/*    cursor: pointer;*/
-/*    color: lightgray;*/
-/*}*/
-
-/*.dateAsButton:hover {*/
-/*    color: black;*/
-/*}*/
-
-/*.dateInput {*/
-/*    text-align: center;*/
-/*    color: inherit;*/
-/*}*/
-
 .inputControlsForm {
     display: flex;
+    flex-direction: column;
 }
 
 .inputControlsForm select, .inputControlsForm input[type="button"] {
