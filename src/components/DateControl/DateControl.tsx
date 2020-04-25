@@ -63,7 +63,7 @@ const DateControl = ({ cardState, handleClick }: CardProps) => {
 
   return (
     <section className="DateControls" title="countdown input section">
-      <form className="inputControls">
+      <form className="inputControlsForm">
         <select
           name="day"
           id="day"

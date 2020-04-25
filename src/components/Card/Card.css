@@ -1,7 +1,5 @@
 .Card {
     display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     width: 100%;
     transition-duration: 200ms;
@@ -11,14 +9,24 @@
     border-bottom: 2px solid hotpink;
 }
 
-.Card:hover {
-    background-color: deeppink;
-    color: white;
-    box-shadow: 0 0 10px black;
+.Card:hover,
+.Card:hover input[type=button]
+{
+    color: black;
 }
 
-.Card > * {
+.Card > section:nth-child(2) {
     min-height: 30vh;
+}
+
+input[type=button] {
+    background-color: transparent;
+    border: none;
+    color: hotpink;
+}
+
+.card-id {
+    text-decoration: underline;
 }
 
 @media all and (min-width: 1024px){

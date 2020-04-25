@@ -6,30 +6,11 @@
 }
 
 @media all and (min-width: 1024px) {
-    .CardsGrid .Card:nth-child(1):hover,
-    .CardsGrid .Card:nth-child(2):hover {
-        z-index: 2;
-    }
+    /*.CardsGrid .Card:nth-child(1):hover,*/
+    /*.CardsGrid .Card:nth-child(2):hover {*/
+    /*    z-index: 2;*/
+    /*}*/
 
-    .CardsGrid .Card:nth-child(1):hover{
-        padding-right: 0;
-        border-right: 0.5rem solid hotpink;
-    }
-
-    .CardsGrid .Card:nth-child(2):hover {
-        padding-left: 0;
-        border-left: 0.5rem solid hotpink;
-    }
-
-    .CardsGrid .Card:nth-child(1) {
-        padding-right: 0.25rem;
-        border-right: 0.25rem solid hotpink;
-    }
-
-    .CardsGrid .Card:nth-child(2) {
-        padding-left: 0.25rem;
-        border-left: 0.25rem solid hotpink;
-    }
     .CardsGrid .Card:nth-child(1),
     .CardsGrid .Card:nth-child(2) {
         width: 50%;
@@ -38,7 +19,6 @@
 
     .CardsGrid .Card {
         min-height: 30vh;
-        /*width: 100vw;*/
         max-width: 100%;
         padding: 2rem;
     }

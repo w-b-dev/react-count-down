@@ -5,9 +5,9 @@
 }
 
 .App {
-  min-height: inherit;
+  flex: 1;
   border: 1px solid var(--main-txt-color);
-  background-color: var(--main-bg-color);
+  /*background-color: var(--main-bg-color);*/
   color: var(--main-txt-color);
   display: flex;
   flex-direction: column;

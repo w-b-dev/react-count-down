@@ -2,12 +2,12 @@ import React from 'react';
 import './CardsGrid.css';
 import Card from '../Card';
 import { CardType, State } from '../interfaces';
-import { createDate } from '../../App';
+import { createDateString } from '../../helper';
 
 const CardsGrid = ({ state, updateState }: State): any => {
   const handleUpdate = (cardState: CardType) => {
     const _state = { ...state };
-    cardState.dateString = createDate(cardState);
+    cardState.dateString = createDateString(cardState);
     if (cardState.editMode === true) {
       // Updates what IS BEING EDITED
       _state.selectedItem = cardState.id;

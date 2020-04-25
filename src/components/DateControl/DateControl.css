@@ -3,8 +3,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-/* try matching 3rem for Display height*/
-/*    min-height: 60px;*/
 }
 .DateControls select{
     font-size: 1.5em;
@@ -14,36 +12,36 @@
     font-size: 1.25em;
 }
 
-.dateAsButton, .dateInput {
-    min-width: fit-content;
-    background-color: transparent;
-    border: none;
-}
+/*.dateAsButton, .dateInput {*/
+/*    min-width: fit-content;*/
+/*    background-color: transparent;*/
+/*    border: none;*/
+/*}*/
 
-.dateAsButton {
-    cursor: pointer;
-    color: lightgray;
-}
+/*.dateAsButton {*/
+/*    cursor: pointer;*/
+/*    color: lightgray;*/
+/*}*/
 
-.dateAsButton:hover {
-    color: #FF72A0;
-}
+/*.dateAsButton:hover {*/
+/*    color: black;*/
+/*}*/
 
-.dateInput {
-    text-align: center;
-    color: inherit;
-}
+/*.dateInput {*/
+/*    text-align: center;*/
+/*    color: inherit;*/
+/*}*/
 
-.inputControls {
+.inputControlsForm {
     display: flex;
 }
 
-.inputControls select, .inputControls input[type="button"] {
+.inputControlsForm select, .inputControlsForm input[type="button"] {
     background-color: rgba(255, 255, 255, 0.8);
     border: none;
     color: #FF72A0;
 }
-.inputControls input[type="button"] {
+.inputControlsForm input[type="button"] {
     font-weight: bold;
     background-color: rgba(255, 255, 255, 1);
     padding: 0 1rem;
