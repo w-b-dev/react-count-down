@@ -56,9 +56,15 @@
     color: rgba(0, 0, 0, 0.75);
 }
 
-@media all and (min-width: 1024px){
+@media all and (min-width: 1024px) {
     /*  mq placeholder*/
     .Header {
         flex-direction: row;
     }
+
+    .nav-categories {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
 }
