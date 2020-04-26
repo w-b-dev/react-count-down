@@ -16,6 +16,27 @@ const Header = ({ state, updateState }: State) => {
   return (
     <header className="Header">
       <h1 className="main-header">Countdown app</h1>
+      <nav className="nav-categories">
+        <h2 className="nav-categories-internal-label">Mock filters:</h2>
+        <a href="#" className="categories hasNotification">
+          birthdays (2)
+        </a>
+        <a href="#" className="categories hasNotification">
+          hygiene routine (8)
+        </a>
+        <a href="#" className="categories hasNotification">
+          exercise plan (1)
+        </a>
+        <a href="#" className="categories">
+          work-related (-)
+        </a>
+        <a href="#" className="categories">
+          side-projects (-)
+        </a>
+        <a href="#" className="categories hasNotification">
+          everything else (23)
+        </a>
+      </nav>
       <form className="form-header flex">
         <label htmlFor="input-title" className="showDesktop">
           Add a title
