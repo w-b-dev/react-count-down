@@ -6,20 +6,5 @@
 }
 
 @media all and (min-width: 1024px) {
-    /*.CardsGrid .Card:nth-child(1):hover,*/
-    /*.CardsGrid .Card:nth-child(2):hover {*/
-    /*    z-index: 2;*/
-    /*}*/
-
-    .CardsGrid .Card:nth-child(1),
-    .CardsGrid .Card:nth-child(2) {
-        width: 50%;
-        height: 70vh;
-    }
-
-    .CardsGrid .Card {
-        min-height: 30vh;
-        max-width: 100%;
-        padding: 2rem;
-    }
+/*    */
 }

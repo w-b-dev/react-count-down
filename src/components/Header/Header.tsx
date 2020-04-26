@@ -24,7 +24,7 @@ const Header = ({ state, updateState }: State) => {
           type="text"
           name="input-title"
           value={title}
-          placeholder="What's the news?!"
+          placeholder="What's up?"
           onChange={(e) => addNewEntry(e)}
         />
         <input

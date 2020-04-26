@@ -9,14 +9,23 @@
     border-bottom: 2px solid hotpink;
 }
 
-.Card:hover,
-.Card:hover input[type=button]
-{
-    color: black;
+.Card:nth-child(n+1) {
+    /*background-color: ghostwhite;*/
+    background-color: lightgreen;
 }
 
-.Card > section:nth-child(2) {
-    min-height: 30vh;
+.Card:nth-child(n+2) {
+    /*background-color: whitesmoke;*/
+    background-color: lightcyan;
+}
+.Card:nth-child(n+3) {
+    /*background-color: whitesmoke;*/
+    background-color: lightgoldenrodyellow;
+}
+
+.Card:hover,
+.Card:hover input[type=button] {
+    color: black;
 }
 
 input[type=button] {
@@ -29,9 +38,11 @@ input[type=button] {
     text-decoration: underline;
 }
 
-@media all and (min-width: 1024px){
+@media all and (min-width: 1024px) {
     .Card {
-        max-width: 640px;
-        border-bottom: 0.5rem solid hotpink;
+        width: 50%;
+        min-height: 250px;
+        padding: 2rem;
+        border-bottom: 5px solid hotpink;
     }
 }
