@@ -36,6 +36,11 @@ const DateControl = ({ cardState, handleClick }: CardProps) => {
     setTitle(target.value);
   };
 
+  const deleteCard = () => {
+    const state = { ...cardState, title: 'DELETE' };
+    handleClick(state);
+  };
+
   const renderNumberedSlots = (
     size: number,
     target: string,
@@ -57,8 +62,8 @@ const DateControl = ({ cardState, handleClick }: CardProps) => {
   return (
     <section className="DateControls" title="countdown input section">
       <form className="inputControlsForm">
-        <section className="title-row">
-          <label htmlFor="title">title:</label>
+        <section className="row">
+          <label htmlFor="title">Title:</label>
           <input
             type="text"
             id="title"
@@ -67,7 +72,7 @@ const DateControl = ({ cardState, handleClick }: CardProps) => {
             onChange={(e) => handleKeyPress(e)}
           />
         </section>
-        <section className="date-row">
+        <section className="row">
           <label htmlFor="day">Date:</label>
           <select
             name="day"
@@ -94,8 +99,16 @@ const DateControl = ({ cardState, handleClick }: CardProps) => {
             {renderNumberedSlots(2, cardState.year, 2020)}
           </select>
         </section>
-        <input type="button" value="Save" onClick={_handleClick} />
       </form>
+      <aside className="buttons-column">
+        <input type="button" value="Save" onClick={_handleClick} />
+        <input
+          className="card-delete"
+          type="button"
+          value="Delete 🚮"
+          onClick={deleteCard}
+        />
+      </aside>
     </section>
   );
 };

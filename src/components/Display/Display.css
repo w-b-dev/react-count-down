@@ -12,7 +12,7 @@
 .Display > .title {
     font-family: 'Lobster', cursive;
     line-height: 3rem;
-    padding-bottom: 1rem;
+    padding: 1rem 0;
 }
 .Display > .countdown-message {
     text-align: center;

@@ -8,7 +8,7 @@ const CardsGrid = ({ state, updateState }: State): any => {
   const handleUpdate = (cardState: CardType) => {
     const _state = { ...state };
     cardState.dateString = createDateString(cardState);
-    if (cardState.editMode === true) {
+    if (cardState.editMode) {
       // Updates what IS BEING EDITED
       _state.selectedItem = cardState.id;
       _state.items.forEach((e) =>

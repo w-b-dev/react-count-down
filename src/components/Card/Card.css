@@ -5,20 +5,20 @@
     transition-duration: 200ms;
     transition-property: all;
     transition-timing-function: ease-out;
-    padding: 1rem;
+    padding: 12px;
     border-bottom: 2px solid hotpink;
 }
 
-.Card:nth-child(n+1) {
+.Card:nth-child(3n+0) {
     /*background-color: ghostwhite;*/
     background-color: lightgreen;
 }
 
-.Card:nth-child(n+2) {
+.Card:nth-child(3n+1) {
     /*background-color: whitesmoke;*/
     background-color: lightcyan;
 }
-.Card:nth-child(n+3) {
+.Card:nth-child(3n+2) {
     /*background-color: whitesmoke;*/
     background-color: lightgoldenrodyellow;
 }
@@ -28,10 +28,20 @@
     color: black;
 }
 
-input[type=button] {
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header input[type=button] {
     background-color: transparent;
     border: none;
     color: hotpink;
+}
+
+.card-controls {
+    margin-left: auto;
 }
 
 .card-id {
