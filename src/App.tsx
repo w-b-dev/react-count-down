@@ -19,7 +19,6 @@ function App() {
   };
   const [state, setState] = useState<StateType>(getInitialState);
   if (state === emptyState) {
-    console.info('FIRST STATE RUN');
     const newState = { ...emptyState, items: mockResponse };
     setState(runCreateDate(newState));
     window.localStorage.setItem('state', JSON.stringify(newState));
@@ -33,7 +32,7 @@ function App() {
     setState(e);
   };
   return (
-    <div className="App">
+    <div className="App" title="main container for App component">
       <Header state={state} updateState={updateState} />
       <CardsGrid state={state} updateState={updateState} />
     </div>
