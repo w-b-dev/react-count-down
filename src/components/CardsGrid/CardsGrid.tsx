@@ -2,26 +2,35 @@ import React from 'react';
 import './CardsGrid.css';
 import Card from '../Card';
 import { CardType, State } from '../interfaces';
-import { createDate } from '../../App';
+import { createDateString } from '../../helper';
 
 const CardsGrid = ({ state, updateState }: State): any => {
   const handleUpdate = (cardState: CardType) => {
     const _state = { ...state };
-    cardState.dateString = createDate(cardState);
-    if (cardState.editMode === true) {
+    cardState.dateString = createDateString(cardState);
+    if (cardState.editMode) {
       // Updates what IS BEING EDITED
       _state.selectedItem = cardState.id;
       _state.items.forEach((e) =>
         e.id !== cardState.id ? (e.editMode = false) : null
       );
     }
-    const mapped = _state.items.map((e) => {
+    /*Let's delete an entry*/
+    let deletedEl = -1;
+    const mapped = _state.items.map((e, i) => {
       if (e.id === cardState.id) {
-        return cardState;
-      } else {
-        return e;
+        if (cardState.title === 'DELETE') {
+          deletedEl = i;
+        } else {
+          return cardState;
+        }
       }
+
+      return e;
     });
+    if (deletedEl !== -1) {
+      mapped.splice(deletedEl, 1);
+    }
     _state.items = mapped;
     updateState(_state);
   };

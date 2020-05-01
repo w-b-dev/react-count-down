@@ -14,21 +14,12 @@ const Display = ({ cardState, handleClick }: CardProps) => {
 
   const message = decideMessage();
 
-  const _handleClick = () => {
-    cardState.editMode = true;
-    // TODO: refactor to execute this the complete state isn't needed
-    // const target: HTMLElement = e.currentTarget as HTMLElement;
-    // const id = target.getAttribute('data-attribute-id') || '0000';
-    handleClick(cardState);
-  };
-
   return (
     <section
       id={`card_${cardState.id}`}
       data-attribute-id={cardState.id}
       className="Display"
       title="countdown display"
-      onClick={_handleClick}
     >
       <div className="title">{cardState.title}</div>
 
