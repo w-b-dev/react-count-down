@@ -10,22 +10,22 @@ jobs: # a collection of steps
       - run:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
-      - restore_cache: # special step to restore the dependency cache
+#      - restore_cache: # special step to restore the dependency cache
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+#          key: dependency-cache-{{ checksum "yarn-lock.json" }}
       - run:
           name: install-npm-wee
           command: npm install
-      - save_cache: # special step to save the dependency cache
-          key: dependency-cache-{{ checksum "yarn-lock.json" }}
-          paths:
-            - ./node_modules
+#      - save_cache: # special step to save the dependency cache
+#          key: dependency-cache-{{ checksum "yarn-lock.json" }}
+#          paths:
+#            - ./node_modules
       - run: # run tests
           name: test
           command: npm test
-      - run: # run coverage report
-          name: code-coverage
-          command: './node_modules/.bin/nyc report --reporter=text-lcov'
+#      - run: # run coverage report
+#          name: code-coverage
+#          command: './node_modules/.bin/nyc report --reporter=text-lcov'
       - store_artifacts: # special step to save test results as as artifact
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: test-results.xml
