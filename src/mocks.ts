@@ -104,7 +104,7 @@ export const mockResponse: CardsType = [
 ];
 export const DEFAULT_TIME = '23:59:59';
 
-export const YEARS_LIST = [
+export const MONTHS_LIST = [
   'Jan',
   'Feb',
   'Mar',

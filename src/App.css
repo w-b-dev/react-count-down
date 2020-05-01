@@ -1,18 +1,15 @@
-:root {
-  --main-bg-color: #0D0C45;
-  --main-txt-color: #FF72A0;
-  --main-padding: 15px;
-}
+/*:root {*/
+/*  --main-bg-color: #0D0C45;*/
+/*  --main-txt-color: #FF72A0;*/
+/*  --main-padding: 15px;*/
+/*}*/
 
 .App {
   flex: 1;
-  border: 1px solid var(--main-txt-color);
-  /*background-color: var(--main-bg-color);*/
-  color: var(--main-txt-color);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  background-color: ghostwhite;
 }
 
 @media all and (min-width: 1024px){

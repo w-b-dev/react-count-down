@@ -1,46 +1,78 @@
 .DateControls {
     flex: 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
 }
-.DateControls select{
+
+.DateControls select {
     font-size: 1.5em;
 }
 
-.DateControls input  {
+.DateControls input {
     font-size: 1.25em;
 }
+
 .row {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .row label {
-    flex: 1;
+    display: none;
 }
+
+/*.selectInputs {*/
+/*    justify-content: center;*/
+/*}*/
+
 .row input {
     background-color: #f7f7f7;
-    border: 1px solid deeppink;
-    color: deeppink;
+    border: 1px solid #FF72A0;;
+    color: black;
 }
+
+.selectInputs select {
+    margin-right: 5px;
+}
+
+.selectInputs select:last-child {
+    margin-right: 0;
+}
+
+.row select, .row input, aside input {
+    flex: 1;
+    border: 1px solid crimson;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 5px;
+}
+
 
 .inputControlsForm {
     display: flex;
     flex-direction: column;
 }
 
-.inputControlsForm select, .inputControlsForm input[type="button"] {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
-    color: #FF72A0;
-}
 .inputControlsForm input[type="button"] {
     font-weight: bold;
     background-color: rgba(255, 255, 255, 1);
     padding: 0 1rem;
 }
+
 .buttons-column {
     display: flex;
     flex-direction: column;
+}
+
+@media all and (min-width: 1024px) {
+    .DateControls {
+        /*justify-content: center;*/
+        /*align-items: center;*/
+    }
+
+    .row label {
+        display: flex;
+        min-width: 15%;
+    }
+
 }

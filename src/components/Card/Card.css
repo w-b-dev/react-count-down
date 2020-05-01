@@ -6,7 +6,11 @@
     transition-property: all;
     transition-timing-function: ease-out;
     padding: 12px;
-    border-bottom: 2px solid hotpink;
+    border: 2px solid crimson;
+    margin: 10px;
+}
+.Card:first-of-type {
+    margin-top: 20px;
 }
 
 .Card:nth-child(3n+0) {
@@ -50,9 +54,21 @@
 
 @media all and (min-width: 1024px) {
     .Card {
-        width: 50%;
+        /*10px margin*/
+        width: calc(50% - 15px);
         min-height: 250px;
         padding: 2rem;
-        border-bottom: 5px solid hotpink;
+    }
+
+    .Card:nth-of-type(1), .Card:nth-of-type(2) {
+        margin-top: 15px;
+    }
+
+    .Card:nth-of-type(odd) {
+        margin-right: 5px;
+    }
+
+    .Card:nth-of-type(even) {
+        margin-left: 5px;
     }
 }

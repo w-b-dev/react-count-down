@@ -1,7 +1,7 @@
 import React, { ChangeEvent, SyntheticEvent, useState } from 'react';
 import './DateControl.css';
 import { CardProps } from '../interfaces';
-import { YEARS_LIST } from '../../mocks';
+import { MONTHS_LIST } from '../../mocks';
 
 const DateControl = ({ cardState, handleClick }: CardProps) => {
   const [title, setTitle] = useState(cardState.title);
@@ -72,7 +72,7 @@ const DateControl = ({ cardState, handleClick }: CardProps) => {
             onChange={(e) => handleKeyPress(e)}
           />
         </section>
-        <section className="row">
+        <section className="row selectInputs">
           <label htmlFor="day">Date:</label>
           <select
             name="day"
@@ -88,7 +88,7 @@ const DateControl = ({ cardState, handleClick }: CardProps) => {
             onChange={_handleChange}
             defaultValue={cardState.month}
           >
-            {renderNumberedSlots(12, cardState.day, 1, YEARS_LIST)}
+            {renderNumberedSlots(12, cardState.day, 1, MONTHS_LIST)}
           </select>
           <select
             name="year"
@@ -101,7 +101,7 @@ const DateControl = ({ cardState, handleClick }: CardProps) => {
         </section>
       </form>
       <aside className="buttons-column">
-        <input type="button" value="Save" onClick={_handleClick} />
+        <input type="button" value="Save ✔️" onClick={_handleClick} />
         <input
           className="card-delete"
           type="button"

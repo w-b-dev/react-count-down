@@ -1,5 +1,4 @@
 .Header {
-    border-bottom: 2px solid hotpink;
     padding: 1rem;
     width: 100%;
     display: flex;
@@ -7,6 +6,7 @@
     justify-content: space-around;
     align-items: center;
     background-color: ghostwhite;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .main-header {
@@ -15,11 +15,12 @@
     border-bottom: 2px solid;
 }
 
-.form-header label {
-    display: flex;
+.showDesktop {
     justify-content: center;
     align-items: center;
     padding: 0 5px;
+    display: none;
+
 }
 
 .nav-categories {
@@ -65,6 +66,10 @@
     .nav-categories {
         background-color: transparent;
         box-shadow: none;
+    }
+
+    .showDesktop {
+        display: flex;
     }
 
 }
