@@ -2,6 +2,7 @@ import React, { ChangeEvent, SyntheticEvent, useState } from 'react';
 import './DateControl.css';
 import { CardProps } from '../interfaces';
 import { MONTHS_LIST } from '../../mocks';
+import { createDateString } from '../../helper';
 
 const DateControl = ({ cardState, handleClick }: CardProps) => {
   const [title, setTitle] = useState(cardState.title);
@@ -28,6 +29,7 @@ const DateControl = ({ cardState, handleClick }: CardProps) => {
       default:
         break;
     }
+    newState.dateString = createDateString(newState);
     handleClick(newState);
   };
 
