@@ -10,8 +10,8 @@ const Card = ({ cardState, handleClick }: CardProps) => {
     handleClick(state);
   };*/
 
-  const updateCard = () => {
-    const state = { ...cardState, editMode: true };
+  const updateCard = (mode: boolean) => {
+    const state = { ...cardState, editMode: mode };
     handleClick(state);
   };
   return (
@@ -26,13 +26,23 @@ const Card = ({ cardState, handleClick }: CardProps) => {
           </span>
         )}
         <form className="card-controls">
-          <input
-            className="card-update"
-            type="button"
-            value="⚙️"
-            onClick={updateCard}
-            aria-label="Update item"
-          />
+          {!cardState.editMode ? (
+            <input
+              className="card-update"
+              type="button"
+              value="⚙️"
+              onClick={() => updateCard(true)}
+              aria-label="open settings"
+            />
+          ) : (
+            <input
+              className="card-update"
+              type="button"
+              value="❎️"
+              onClick={() => updateCard(false)}
+              aria-label="close settings"
+            />
+          )}
           {/*<input
             className="card-delete"
             type="button"
