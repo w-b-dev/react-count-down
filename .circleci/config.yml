@@ -39,6 +39,6 @@ jobs: # a collection of steps
           path: test-results.xml
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
       - run: exit 0
-     - slack/status:
-        mentions: 'U012TE04Z7V'
-        webhook: '${SLACK_WEBHOOK}'
+      - slack/status:
+          mentions: 'U012TE04Z7V'
+          webhook: '${SLACK_WEBHOOK}'
