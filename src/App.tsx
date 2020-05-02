@@ -4,14 +4,6 @@ import { StateType } from './components/interfaces';
 import CardsGrid from './components/CardsGrid';
 import Header from './components/Header';
 import { emptyState, mockResponse } from './mocks';
-import { createDateString } from './helper';
-
-const runCreateDate = (state: StateType) => {
-  state.items.forEach((e) =>
-    e.dateString === '' ? (e.dateString = createDateString(e)) : null
-  );
-  return state;
-};
 
 function App() {
   const getInitialState = () => {
@@ -20,12 +12,12 @@ function App() {
   const [state, setState] = useState<StateType>(getInitialState);
   if (state === emptyState) {
     const newState = { ...emptyState, items: mockResponse };
-    setState(runCreateDate(newState));
+    setState(newState);
     window.localStorage.setItem('state', JSON.stringify(newState));
   }
   useEffect(() => {
     window.localStorage.setItem('state', JSON.stringify(state));
-    setState(runCreateDate(state));
+    setState(state);
   }, [state]);
 
   const updateState = (e: StateType) => {
