@@ -1,38 +1,51 @@
 version: 2.1 # use CircleCI 2.1
+orbs:
+  slack: circleci/slack@3.4.2
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
     working_directory: ~/mern-starter # directory where steps will run
     docker: # run the steps with Docker
-      - image: circleci/node:10.16.3 # ...with this image as the primary container; this is where all `steps` will run
-      - image: mongo:4.2.0 # and this image as the secondary service container
+      - image: circleci/node:latest # ...with this image as the primary container; this is where all `steps` will run
+#      - image: mongo:4.2.0 # and this image as the secondary service container
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
-      - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@latest'
-#      - restore_cache: # special step to restore the dependency cache
+#      - run:
+#          name: update-npm
+#          command: 'sudo npm install -g npm@latest'
+      - restore_cache: # special step to restore the dependency cache
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
-#          key: dependency-cache-{{ checksum "yarn-lock.json" }}
+          key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
-          name: install-npm-wee
-          command: npm install
-#      - save_cache: # special step to save the dependency cache
-#          key: dependency-cache-{{ checksum "yarn-lock.json" }}
-#          paths:
-#            - ./node_modules
+#          name: install-npm-wee
+          name: install-yarn-wee
+          command: yarn
+      - save_cache: # special step to save the dependency cache
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
       - run: # run tests
           name: test
-          command: npm test
+          command: yarn test
+      - run: # run build
+          name: build
+          command: yarn build
+      - run: # deploy to firebase
+          name: deploy
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
 #      - run: # run coverage report
 #          name: code-coverage
 #          command: './node_modules/.bin/nyc report --reporter=text-lcov'
-      - store_artifacts: # special step to save test results as as artifact
-          # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: test-results.xml
-          prefix: tests
-      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: coverage
-          prefix: coverage
-      - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: test-results.xml
+#      - store_artifacts: # special step to save test results as as artifact
+#           Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+#          path: test-results.xml
+#          prefix: tests
+#      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+#          path: coverage
+#          prefix: coverage
+#      - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+#          path: test-results.xml
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
+      - run: exit 0
+      - slack/status:
+          mentions: 'U012TE04Z7V'
+          webhook: '${SLACK_WEBHOOK}'
