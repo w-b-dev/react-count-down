@@ -34,7 +34,7 @@
       ">0.5% in CA",
       "not dead",
       "not op_mini all",
-      "not ie all"
+      "not ie >= 0"
     ],
     "development": [
       "last 1 chrome version",
