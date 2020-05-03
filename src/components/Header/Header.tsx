@@ -8,7 +8,6 @@ const Header = ({ state, updateState }: State) => {
   const [title, setTitle] = useState('');
 
   const submitEntry = () => {
-    console.info('submitEntry');
     const id = uuidv4();
     const entry: CardType = {
       title: title,
@@ -19,14 +18,20 @@ const Header = ({ state, updateState }: State) => {
       editMode: true,
       dateString: '',
     };
-    console.log(entry);
     const newState = { ...state };
     newState.items.push(entry);
     updateState(newState);
+    setTitle('');
   };
-  const handleKeyPress = (e: SyntheticEvent<HTMLInputElement>) => {
+  const handleOnChange = (e: SyntheticEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
     setTitle(target.value);
+  };
+
+  const handleOnKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key.toLowerCase() === 'enter') {
+      submitEntry();
+    }
   };
   return (
     <header className="Header">
@@ -52,7 +57,7 @@ const Header = ({ state, updateState }: State) => {
           everything else (23)
         </a>
       </nav>*/}
-      <form className="form-header flex">
+      <form className="form-header flex" onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="input-title" className="showDesktop">
           Create a countdown
         </label>
@@ -61,7 +66,8 @@ const Header = ({ state, updateState }: State) => {
           name="input-title"
           value={title}
           placeholder="What's the title?"
-          onChange={(e) => handleKeyPress(e)}
+          onChange={(e) => handleOnChange(e)}
+          onKeyPress={(e) => handleOnKeyPress(e)}
         />
         <input
           className="hideDesktop"
