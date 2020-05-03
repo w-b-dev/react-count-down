@@ -9,7 +9,7 @@ const Header = ({ state, updateState }: State) => {
 
   const noOtherEntryOpen = () => {
     const match = state.items.find((e) => e.editMode);
-    return !match;
+    return !match && title !== '';
   };
 
   const submitEntry = () => {
