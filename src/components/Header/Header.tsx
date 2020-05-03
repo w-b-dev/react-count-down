@@ -7,21 +7,28 @@ import { MONTHS_LIST } from '../../mocks';
 const Header = ({ state, updateState }: State) => {
   const [title, setTitle] = useState('');
 
+  const noOtherEntryOpen = () => {
+    const match = state.items.find((e) => e.editMode);
+    return !match;
+  };
+
   const submitEntry = () => {
-    const id = uuidv4();
-    const entry: CardType = {
-      title: title,
-      id: id,
-      day: new Date().getDate().toString(),
-      month: MONTHS_LIST[new Date().getMonth()],
-      year: new Date().getFullYear().toString(),
-      editMode: true,
-      dateString: '',
-    };
-    const newState = { ...state };
-    newState.items.push(entry);
-    updateState(newState);
-    setTitle('');
+    if (noOtherEntryOpen()) {
+      const id = uuidv4();
+      const entry: CardType = {
+        title: title,
+        id: id,
+        day: new Date().getDate().toString(),
+        month: MONTHS_LIST[new Date().getMonth()],
+        year: new Date().getFullYear().toString(),
+        editMode: true,
+        dateString: '',
+      };
+      const newState = { ...state };
+      newState.items.push(entry);
+      updateState(newState);
+      setTitle('');
+    }
   };
   const handleOnChange = (e: SyntheticEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
