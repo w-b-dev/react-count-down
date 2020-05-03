@@ -5,17 +5,12 @@ import { CardProps } from '../interfaces';
 import './Card.css';
 
 const Card = ({ cardState, handleClick }: CardProps) => {
-  /*const deleteCard = () => {
-    const state = { ...cardState, title: 'DELETE' };
-    handleClick(state);
-  };*/
-
   const updateCard = (mode: boolean) => {
     const state = { ...cardState, editMode: mode };
     handleClick(state);
   };
   return (
-    <article className="Card flex-col">
+    <article className={`Card flex-col ${cardState.editMode ? 'opened' : ''}`}>
       <section className="card-header flex space-around">
         {!cardState.editMode && (
           <span id={cardState.id} className="card-date">
@@ -43,12 +38,6 @@ const Card = ({ cardState, handleClick }: CardProps) => {
               aria-label="close settings"
             />
           )}
-          {/*<input
-            className="card-delete"
-            type="button"
-            value="Delete 🚮"
-            onClick={deleteCard}
-          />*/}
         </form>
       </section>
       {cardState.editMode ? (

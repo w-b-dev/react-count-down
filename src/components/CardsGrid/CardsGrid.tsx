@@ -15,7 +15,6 @@ const CardsGrid = ({ state, updateState }: State): any => {
         e.id !== cardState.id ? (e.editMode = false) : null
       );
     }
-    /*Let's delete an entry*/
     let deletedEl = -1;
     const mapped = _state.items.map((e, i) => {
       if (e.id === cardState.id) {

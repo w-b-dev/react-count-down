@@ -5,6 +5,10 @@
     flex-wrap: wrap;
 }
 
+.opened {
+    order: -1;
+}
+
 @media all and (min-width: 1024px) {
 /*    */
 }
