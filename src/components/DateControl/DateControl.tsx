@@ -6,7 +6,7 @@ import { createDateString } from '../../helper';
 
 const DateControl = ({ cardState, handleClick }: CardProps) => {
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   }, [cardState]);
 
   const [title, setTitle] = useState(cardState.title);
