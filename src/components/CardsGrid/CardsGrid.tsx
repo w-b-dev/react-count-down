@@ -2,7 +2,8 @@ import React from 'react';
 import './CardsGrid.css';
 import Card from '../Card';
 import { CardType, State } from '../interfaces';
-import { createDateString } from '../../helper';
+import {createDateString} from '../../helper';
+import {calculateTimeGap} from "../Display/Display";
 
 const CardsGrid = ({ state, updateState }: State): any => {
   const handleUpdate = (cardState: CardType) => {
@@ -25,20 +26,27 @@ const CardsGrid = ({ state, updateState }: State): any => {
         }
       }
 
-      return e;
+        return e;
     });
-    if (deletedEl !== -1) {
-      mapped.splice(deletedEl, 1);
-    }
-    _state.items = mapped;
-    updateState(_state);
+      if (deletedEl !== -1) {
+          mapped.splice(deletedEl, 1);
+      }
+      _state.items = mapped;
+      updateState(_state);
   };
-  const renderCards =
-    state && state.items
-      ? state.items.map((e) => {
-          return <Card key={e.id} cardState={e} handleClick={handleUpdate} />;
-        })
-      : null;
-  return <div className="CardsGrid">{renderCards}</div>;
+    const cardsNotSorted =
+        state && state.items
+            ? state.items.map((e) => {
+                return <Card key={e.id} cardState={e} handleClick={handleUpdate}/>;
+            })
+            : null;
+    cardsNotSorted?.sort((a, b): number => {
+        const cA = calculateTimeGap(a.props.cardState);
+        const cB = calculateTimeGap(b.props.cardState);
+        if (cA > cB) return 1;
+        if (cA < cB) return -1;
+        return 0;
+    })
+    return <div className="CardsGrid">{cardsNotSorted}</div>;
 };
 export default CardsGrid;

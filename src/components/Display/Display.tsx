@@ -1,12 +1,16 @@
 import React from 'react';
 import './Display.css';
-import { CardProps } from '../interfaces';
+import {CardProps, CardType} from '../interfaces';
 
-const Display = ({ cardState, handleClick }: CardProps) => {
-  const countDownDate = new Date(cardState.dateString).getTime();
+export const calculateTimeGap = (state: CardType) => {
+  const countDownDate = new Date(state.dateString).getTime();
   const oneDayInMs = 1000 * 60 * 60 * 24;
   const now = new Date().getTime();
-  const timeGap = Math.floor((countDownDate - now) / oneDayInMs);
+  return  Math.floor((countDownDate - now) / oneDayInMs);
+}
+
+const Display = ({ cardState }: CardProps) => {
+  const timeGap = calculateTimeGap(cardState);
 
   const decideMessage = ({
     amount,
@@ -21,14 +25,16 @@ const Display = ({ cardState, handleClick }: CardProps) => {
   };
 
   const conditionalValue = () => {
-    if (timeGap < 14) return { amount: timeGap, scale: 'days' };
-    if (timeGap < 4 * 30)
-      return { amount: Math.round(timeGap / 7), scale: 'weeks' };
-    if (timeGap < 24 * 30)
-      return { amount: Math.round(timeGap / 30), scale: 'months' };
-    if (timeGap < 240 * 30)
-      return { amount: Math.round(timeGap / 360), scale: 'years' };
-    return { amount: Math.round(timeGap / 3600), scale: 'decades' };
+    const timeGapAbsolute = Math.abs(timeGap);
+    if (timeGapAbsolute < 14) return {amount: timeGapAbsolute, scale: 'days'};
+    if (timeGapAbsolute < 4 * 30)
+      return {amount: Math.round(timeGapAbsolute / 7), scale: 'weeks'};
+    if (timeGapAbsolute < 24 * 30)
+      return {amount: Math.round(timeGapAbsolute / 30), scale: 'months'};
+    // defaults to years
+    // TODO: CHECK ISSUE WITH CUMULATIVE IMPRECISION DUE TO ROUNDING AND PREMISES
+    // Example: Should not be considering all months to be 30 days and all years 365.
+    return {amount: Math.trunc((timeGapAbsolute / 365) * 10)/10, scale: 'years'};
   };
   return (
     <section
