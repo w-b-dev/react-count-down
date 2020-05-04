@@ -26,14 +26,15 @@ const Display = ({ cardState }: CardProps) => {
 
   const conditionalValue = () => {
     const timeGapAbsolute = Math.abs(timeGap);
-    if (timeGapAbsolute < 14) return { amount: timeGapAbsolute, scale: 'days' };
+    if (timeGapAbsolute < 14) return {amount: timeGapAbsolute, scale: 'days'};
     if (timeGapAbsolute < 4 * 30)
-      return { amount: Math.round(timeGapAbsolute / 7), scale: 'weeks' };
+      return {amount: Math.round(timeGapAbsolute / 7), scale: 'weeks'};
     if (timeGapAbsolute < 24 * 30)
-      return { amount: Math.round(timeGapAbsolute / 30), scale: 'months' };
-    if (timeGapAbsolute < 240 * 30)
-      return { amount: Math.round(timeGapAbsolute / 360), scale: 'years' };
-    return { amount: Math.round(timeGapAbsolute / 3600), scale: 'decades' };
+      return {amount: Math.round(timeGapAbsolute / 30), scale: 'months'};
+    // defaults to years
+    // TODO: CHECK ISSUE WITH CUMULATIVE IMPRECISION DUE TO ROUNDING AND PREMISES
+    // Example: Should not be considering all months to be 30 days and all years 365.
+    return {amount: Math.trunc((timeGapAbsolute / 365) * 10)/10, scale: 'years'};
   };
   return (
     <section
