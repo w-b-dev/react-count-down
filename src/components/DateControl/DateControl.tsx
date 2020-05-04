@@ -1,10 +1,14 @@
-import React, { ChangeEvent, SyntheticEvent, useState } from 'react';
+import React, { ChangeEvent, SyntheticEvent, useEffect, useState } from 'react';
 import './DateControl.css';
 import { CardProps } from '../interfaces';
 import { MONTHS_LIST } from '../../mocks';
 import { createDateString } from '../../helper';
 
 const DateControl = ({ cardState, handleClick }: CardProps) => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [cardState]);
+
   const [title, setTitle] = useState(cardState.title);
 
   const _handleClick = () => {
