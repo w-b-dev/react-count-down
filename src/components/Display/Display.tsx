@@ -13,15 +13,36 @@ const Display = ({ cardState }: CardProps) => {
   const timeGap = calculateTimeGap(cardState);
 
   const decideMessage = ({
-    amount,
-    scale,
-  }: {
+                           amount,
+                           scale,
+                         }: {
     amount: number;
     scale: string;
   }) => {
     return timeGap > 0
-      ? `${amount} ${scale} to go`
-      : `${amount} ${scale} have passed`;
+        ? [amount, scale, 'to go until']
+        : [amount, scale, 'have passed since'];
+  };
+
+  const Time = () => {
+    const [amount, scale, phrase] = decideMessage(conditionalValue());
+    return <div className="countdown-message">
+      {timeGap === 0
+          ? <span className="today">Today is the day!!!</span>
+          :
+          <>
+            <span className="time-amount">
+              {amount}
+            </span>
+            <span className="time-scale">
+              {scale}
+            </span>
+            <span className="time-complement">
+              {phrase}
+            </span>
+          </>
+      }
+    </div>
   };
 
   const conditionalValue = () => {
@@ -43,13 +64,8 @@ const Display = ({ cardState }: CardProps) => {
       className="Display"
       title="countdown display"
     >
-      <div className="title">{cardState.title}</div>
-
-      <div className="countdown-message">
-        {timeGap === 0
-          ? 'Today is the day!!!'
-          : `${decideMessage(conditionalValue())}`}
-      </div>
+      <Time/>
+      <span className="title">{cardState.title}</span>
     </section>
   );
 };
