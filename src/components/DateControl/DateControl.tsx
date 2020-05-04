@@ -102,7 +102,7 @@ const DateControl = ({ cardState, handleClick }: CardProps) => {
             onChange={_handleChange}
             defaultValue={cardState.year}
           >
-            {renderNumberedSlots(100, cardState.year, 1929)}
+            {renderNumberedSlots(200, cardState.year, 1929)}
           </select>
         </section>
       </form>

@@ -8,12 +8,28 @@ const Display = ({ cardState, handleClick }: CardProps) => {
   const now = new Date().getTime();
   const timeGap = Math.floor((countDownDate - now) / oneDayInMs);
 
-  const decideMessage = () => {
-    return timeGap > 0 ? 'days to go' : 'days have passed';
+  const decideMessage = ({
+    amount,
+    scale,
+  }: {
+    amount: number;
+    scale: string;
+  }) => {
+    return timeGap > 0
+      ? `${amount} ${scale} to go`
+      : `${amount} ${scale} have passed`;
   };
 
-  const message = decideMessage();
-
+  const conditionalValue = () => {
+    if (timeGap < 14) return { amount: timeGap, scale: 'days' };
+    if (timeGap < 4 * 30)
+      return { amount: Math.round(timeGap / 7), scale: 'weeks' };
+    if (timeGap < 24 * 30)
+      return { amount: Math.round(timeGap / 30), scale: 'months' };
+    if (timeGap < 240 * 30)
+      return { amount: Math.round(timeGap / 360), scale: 'years' };
+    return { amount: Math.round(timeGap / 3600), scale: 'decades' };
+  };
   return (
     <section
       id={`card_${cardState.id}`}
@@ -26,7 +42,7 @@ const Display = ({ cardState, handleClick }: CardProps) => {
       <div className="countdown-message">
         {timeGap === 0
           ? 'Today is the day!!!'
-          : `${timeGap.toString()} ${message}`}
+          : `${decideMessage(conditionalValue())}`}
       </div>
     </section>
   );
