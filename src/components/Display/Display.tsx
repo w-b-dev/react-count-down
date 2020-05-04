@@ -1,12 +1,16 @@
 import React from 'react';
 import './Display.css';
-import { CardProps } from '../interfaces';
+import {CardProps, CardType} from '../interfaces';
 
-const Display = ({ cardState }: CardProps) => {
-  const countDownDate = new Date(cardState.dateString).getTime();
+export const calculateTimeGap = (state: CardType) => {
+  const countDownDate = new Date(state.dateString).getTime();
   const oneDayInMs = 1000 * 60 * 60 * 24;
   const now = new Date().getTime();
-  const timeGap = Math.floor((countDownDate - now) / oneDayInMs);
+  return  Math.floor((countDownDate - now) / oneDayInMs);
+}
+
+const Display = ({ cardState }: CardProps) => {
+  const timeGap = calculateTimeGap(cardState);
 
   const decideMessage = ({
     amount,
