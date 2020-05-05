@@ -67,9 +67,9 @@ const Display = ({ cardState }: CardProps) => {
     >
       <Time />
       <div className="card-description">
-        <span className="icon"> 💬 </span>
+        <span className="icon" role="img" aria-label="chat emoji"> 💬 </span>
         <span className="title">{cardState.title}</span>
-        <span className="icon"> 📅 </span>
+        <span className="icon" role="img" aria-label="calendar emoji"> 📅 </span>
         <span id={cardState.id} className="card-date">
           {cardState.dateString
             .split(' ')

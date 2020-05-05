@@ -1,4 +1,5 @@
 .Display {
+    font-size: 2rem;
     user-select: none;
     flex: 1;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
@@ -44,7 +45,7 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    line-height: 1em;
+    line-height: 0.8em;
     padding-left: 4px;
 
 }
