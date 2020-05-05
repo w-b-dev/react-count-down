@@ -12,16 +12,8 @@ const Card = ({ cardState, handleClick }: CardProps) => {
   return (
     <article className={`Card flex-col ${cardState.editMode ? 'opened' : ''}`}>
       <section className="card-header flex space-around">
-        {!cardState.editMode && (
-          <span id={cardState.id} className="card-date">
-            {cardState.dateString
-              .split(' ')
-              .slice(0, cardState.dateString.split(' ').length - 1)
-              .join(' ')}
-          </span>
-        )}
         <form className="card-controls">
-          {!cardState.editMode ? (
+          {!cardState.editMode && (
             <input
               className="card-update"
               type="button"
@@ -29,15 +21,16 @@ const Card = ({ cardState, handleClick }: CardProps) => {
               onClick={() => updateCard(true)}
               aria-label="open settings"
             />
-          ) : (
-            <input
+          )}
+          {/*(
+          <input
               className="card-update"
               type="button"
               value="❎️"
               onClick={() => updateCard(false)}
               aria-label="close settings"
-            />
-          )}
+          />
+          )*/}
         </form>
       </section>
       {cardState.editMode ? (

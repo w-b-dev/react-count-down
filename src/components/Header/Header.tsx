@@ -72,7 +72,7 @@ const Header = ({ state, updateState }: State) => {
           type="text"
           name="input-title"
           value={title}
-          placeholder="What's the title?"
+          placeholder="wanna write smth?"
           onChange={(e) => handleOnChange(e)}
           onKeyPress={(e) => handleOnKeyPress(e)}
         />
