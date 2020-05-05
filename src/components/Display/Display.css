@@ -2,10 +2,7 @@
     user-select: none;
     flex: 1;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
-    font-size: 2rem;
-    line-height: 2em;
 }
-/*.Display > .title {*/
 .Display .time-amount {
     padding: 5px 10px;
     background-color: black;
@@ -16,19 +13,44 @@
 .Display .time-scale {
     font-weight: bold;
     font-size: 1em;
-    padding: 0 8px 0 8px;
 }
 
 .Display .time-complement {
     font-size: 0.5em;
 }
-.Display > .title {
-    text-align: center;
-    text-decoration: underline;
+
+.Display .icon {
+    font-size: 1rem;
+}
+
+.Display .title {
+    text-align: justify;
+    line-height: 22px;
+    font-size: 1rem;
+}
+
+.Display .card-description {
+    padding-top: 6px;
+}
+
+.Display .countdown-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+    padding-bottom: 6px;
+}
+.Display .countdown-message .wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    line-height: 1em;
+    padding-left: 4px;
+
 }
 
 @media all and (min-width: 1024px){
-    .Display > .title {
-        line-height: 4rem;
+    .Display .title {
+        /*line-height: 4rem;*/
     }
 }
