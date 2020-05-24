@@ -1,11 +1,10 @@
 import React from 'react';
-import './CardsGrid.css';
-import Card from '../Card';
+import './OpenCardArea.css';
 import { CardType, State } from '../interfaces';
+import DateControl from '../DateControl';
 import { createDateString } from '../../helpers/helper';
-import { calculateTimeGap } from '../Display/Display';
 
-const CardsGrid = ({ state, updateState }: State) => {
+const OpenCardArea = ({ state, updateState }: State) => {
   const handleUpdate = (cardState: CardType, selectedItem?: string) => {
     const _state = { ...state };
     if (selectedItem) {
@@ -41,17 +40,31 @@ const CardsGrid = ({ state, updateState }: State) => {
     }
     updateState(_state);
   };
-  const cardsArray = state?.items?.map((e) => {
-    return <Card key={e.id} cardState={e} handleClick={handleUpdate} />;
-  });
-  // TODO: move this sort function somewhere else
-  cardsArray?.sort((a, b): number => {
-    const cA = calculateTimeGap(a.props.cardState);
-    const cB = calculateTimeGap(b.props.cardState);
-    if (cA > cB) return 1;
-    if (cA < cB) return -1;
-    return 0;
-  });
-  return <main className="CardsGrid">{cardsArray}</main>;
+  // This will always return a value --- !
+  const _cardState = state.items.find((e) => e.id === state.selectedItem)!;
+  const openEditMode = () => {
+    const _state = { ...state };
+    const index = _state.items.findIndex((e) => e.id === _cardState.id);
+    _cardState.editMode = true;
+    _state.items[index] = _cardState;
+    updateState(_state);
+  };
+  return (
+    <section className="OpenCardArea">
+      {_cardState ? (
+        !_cardState.editMode ? (
+          <section>
+            <p>Title: {_cardState.title}</p>
+            <input type="button" onClick={openEditMode} value="Edit" />
+          </section>
+        ) : (
+          <DateControl cardState={_cardState} handleClick={handleUpdate} />
+        )
+      ) : (
+        'Try selecting an entry'
+      )}
+    </section>
+  );
 };
-export default CardsGrid;
+
+export default OpenCardArea;

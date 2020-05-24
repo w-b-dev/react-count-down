@@ -1,17 +1,17 @@
 import React from 'react';
-import DateControl from '../DateControl';
 import Display from '../Display';
 import { CardProps } from '../interfaces';
 import './Card.css';
 
 const Card = ({ cardState, handleClick }: CardProps) => {
-  const updateCard = (mode: boolean) => {
+  /*const updateCard = (mode: boolean) => {
     const state = { ...cardState, editMode: mode };
     handleClick(state);
-  };
+  };*/
   return (
-    <article className={`Card flex-col ${cardState.editMode ? 'opened' : ''}`}>
-      <section className="card-header flex space-around">
+    <article className={`Card flex-col`}>
+      {/*<article className={`Card flex-col ${cardState.editMode ? 'opened' : ''}`}>*/}
+      {/*<section className="card-header flex space-around">
         <form className="card-controls">
           {!cardState.editMode && (
             <input
@@ -22,7 +22,7 @@ const Card = ({ cardState, handleClick }: CardProps) => {
               aria-label="open settings"
             />
           )}
-          {/*(
+          (
           <input
               className="card-update"
               type="button"
@@ -30,14 +30,10 @@ const Card = ({ cardState, handleClick }: CardProps) => {
               onClick={() => updateCard(false)}
               aria-label="close settings"
           />
-          )*/}
+          )
         </form>
-      </section>
-      {cardState.editMode ? (
-        <DateControl cardState={cardState} handleClick={handleClick} />
-      ) : (
-        <Display cardState={cardState} handleClick={handleClick} />
-      )}
+      </section>*/}
+      <Display cardState={cardState} handleClick={handleClick} />
     </article>
   );
 };
