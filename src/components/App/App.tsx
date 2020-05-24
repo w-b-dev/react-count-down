@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { StateType } from './components/interfaces';
-import CardsGrid from './components/CardsGrid';
-import Header from './components/Header';
-import { emptyState, mockResponse } from './mocks';
+import { emptyState, mockResponse } from '../../data/mocks';
+import { StateType } from '../interfaces';
+import OpenCardArea from '../OpenCardArea';
+import CardsGrid from '../CardsGrid';
+import FooterControls from '../FooterControls';
 
 function App() {
   const getInitialState = () => {
@@ -16,6 +17,10 @@ function App() {
     window.localStorage.setItem('state', JSON.stringify(newState));
   }
   useEffect(() => {
+    state.selectedItem = '';
+  });
+
+  useEffect(() => {
     window.localStorage.setItem('state', JSON.stringify(state));
     setState(state);
   }, [state]);
@@ -24,10 +29,11 @@ function App() {
     setState(e);
   };
   return (
-    <div className="App" title="main container for App component">
-      <Header state={state} updateState={updateState} />
+    <React.Fragment>
+      <OpenCardArea state={state} updateState={updateState} />
       <CardsGrid state={state} updateState={updateState} />
-    </div>
+      <FooterControls state={state} updateState={updateState} />
+    </React.Fragment>
   );
 }
 

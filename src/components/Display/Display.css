@@ -1,8 +1,10 @@
 .Display {
-    font-size: 2rem;
     user-select: none;
-    flex: 1;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .Display .time-amount {
     padding: 5px 10px;
@@ -24,14 +26,21 @@
     font-size: 1rem;
 }
 
-.Display .title {
-    text-align: justify;
-    line-height: 22px;
-    font-size: 1rem;
+.Display .card-description {
+    flex: 1;
+    display: flex;
+    align-items: center;
 }
 
-.Display .card-description {
-    padding-top: 6px;
+.Display .title {
+    flex: 1;
+    text-align: left;
+    line-height: 22px;
+    max-width: 22ch;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
 }
 
 .Display .countdown-message {

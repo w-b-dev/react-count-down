@@ -1,4 +1,4 @@
-import { CardsType } from './components/interfaces';
+import { CardsType } from '../components/interfaces';
 
 export const emptyState = { items: [], selectedItem: null };
 export const mockResponse: CardsType = [

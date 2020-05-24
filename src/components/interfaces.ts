@@ -1,6 +1,6 @@
 export interface CardProps {
   cardState: CardType;
-  handleClick: (cardState: CardType) => void;
+  handleClick: (cardState: CardType, selectedItem?: string) => void;
 }
 
 export type CardType = {
