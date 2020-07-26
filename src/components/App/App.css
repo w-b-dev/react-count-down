@@ -1,9 +1,3 @@
-/*:root {*/
-/*  --main-bg-color: #0D0C45;*/
-/*  --main-txt-color: #FF72A0;*/
-/*  --main-padding: 15px;*/
-/*}*/
-
 .App {
   flex: 1;
   display: flex;
@@ -12,10 +6,8 @@
   background-color: ghostwhite;
 }
 
-@media all and (min-width: 1024px){
-/*  mq placeholder*/
+/* @media all and (min-width: 1024px){
 }
 
 @media (prefers-reduced-motion: no-preference) {
-/*  animation placeholder */
-}
+} */

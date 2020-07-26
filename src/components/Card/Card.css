@@ -1,71 +1,18 @@
 .Card {
-    display: flex;
-    text-align: center;
-    width: 100%;
-    transition-duration: 200ms;
-    transition-property: all;
-    transition-timing-function: ease-out;
-    padding: 8px;
-    margin: 4px;
-    cursor: pointer;
-    border-radius: 4px;
-    box-shadow: 0 0 6px rgba(128, 128, 128, 0.5);
-}
-
-.Card:first-of-type {
-    margin-top: 8px;
-}
-
-.Card:nth-child(3n+0) {
-    /*background-color: ghostwhite;*/
-    background-color: rgba(0, 20, 60, 0.21);
-}
-
-.Card:nth-child(3n+1) {
-    /*background-color: whitesmoke;*/
-    background-color: rgba(0, 20, 60, 0.07);
-}
-.Card:nth-child(3n+2) {
-    /*background-color: whitesmoke;*/
-    background-color: rgba(0, 20, 60, 0.15);
-}
-
-.Card:hover,
-.Card:hover input[type=button] {
-    color: black;
-}
-
-.card-header {
     position: relative;
-    left: 100%;
-    width: 0;
-    height: 0;
+    border:1px solid gray;
+    padding: 1rem;
+    margin: 1rem;
+    line-height: 1rem;
+    /* box-shadow: 0 0 6px rgba(128, 128, 128, 0.5); */
 }
 
-.card-header input[type=button] {
-    background-color: transparent;
-    border: none;
-    /*color: hotpink;*/
+.Card.selected {
+    background-color: beige;
 }
 
-.card-controls {
-    padding-right: 0.5em;
-    padding-top: 0.5em;
-}
-.card-date {
-    font-size: 1rem;
-}
-.card-id {
-    text-decoration: underline;
-}
-
-@media all and (min-width: 1024px) {
-    .Card {
-        width: calc(32% - 7px);
-        padding: 1rem;
-    }
-
-    .Card:nth-of-type(1), .Card:nth-of-type(2), .Card:nth-of-type(3) {
-        margin-top: 15px;
-    }
+.Card .icon-selected {
+    position: absolute;
+    top: calc(50% - 11px);
+    left: 0;
 }

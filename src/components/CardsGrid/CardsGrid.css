@@ -1,15 +1,5 @@
 .CardsGrid {
-    /*flex: 1;*/
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    background-color: lightgray;
 }
 
-.opened {
-    order: -1;
-}
-
-@media all and (min-width: 1024px) {
-    /*    */
-}
+/* @media all and (min-width: 1024px) {} */

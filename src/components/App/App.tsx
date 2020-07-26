@@ -1,38 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { emptyState, mockResponse } from '../../data/mocks';
-import { StateType } from '../interfaces';
-import OpenCardArea from '../OpenCardArea';
 import CardsGrid from '../CardsGrid';
-import FooterControls from '../FooterControls';
+import { mockResponse } from '../../data/mocks'
 
 function App() {
-  const getInitialState = () => {
-    return JSON.parse(window.localStorage.getItem('state')!) || emptyState;
-  };
-  const [state, setState] = useState<StateType>(getInitialState);
-  if (state === emptyState) {
-    const newState = { ...emptyState, items: mockResponse };
-    setState(newState);
-    window.localStorage.setItem('state', JSON.stringify(newState));
+  const [state, setState] = useState(mockResponse);
+  const handleClick = (id: string) => {
+    console.log(`update task: ${id}`);
+    const newResponse = mockResponse.map(e => {
+      if (e.id === id) { e.selected = !e.selected };
+      return e;
+    })
+    setState(newResponse);
   }
-  useEffect(() => {
-    state.selectedItem = '';
-  });
-
-  useEffect(() => {
-    window.localStorage.setItem('state', JSON.stringify(state));
-    setState(state);
-  }, [state]);
-
-  const updateState = (e: StateType) => {
-    setState(e);
-  };
   return (
     <React.Fragment>
-      <OpenCardArea state={state} updateState={updateState} />
-      <CardsGrid state={state} updateState={updateState} />
-      <FooterControls state={state} updateState={updateState} />
+      <CardsGrid cards={state} handleClick={(s) => handleClick(s)} />
     </React.Fragment>
   );
 }

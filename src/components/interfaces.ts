@@ -1,26 +1,18 @@
-export interface CardProps {
-  cardState: CardType;
-  handleClick: (cardState: CardType, selectedItem?: string) => void;
-}
+import { type } from "os";
 
-export type CardType = {
+export type CardsGridProps = {
+  cards: CardState[];
+  handleClick: (s: string) => void;
+}
+export type CardProps = CardState & {
+  handleClick: (s: string) => void;
+}
+export type CardState = {
   id: string;
   title: string;
   day: string;
   month: string;
   year: string;
   dateString: string;
-  editMode: boolean;
-};
-
-export type CardsType = CardType[];
-
-export type State = {
-  state: StateType;
-  updateState: (s: StateType) => void;
-};
-
-export type StateType = {
-  items: CardsType;
-  selectedItem: string | null;
+  selected: boolean;
 };

@@ -1,7 +1,7 @@
-import { CardsType } from '../components/interfaces';
+import { CardState } from '../components/interfaces';
 
 export const emptyState = { items: [], selectedItem: null };
-export const mockResponse: CardsType = [
+export const mockResponse: CardState[] = [
   {
     id: '8912830912830',
     title: "Daniel's birthday",
@@ -9,7 +9,7 @@ export const mockResponse: CardsType = [
     month: 'Jun',
     year: '2020',
     dateString: 'Jun 27, 2020 23:59:59',
-    editMode: false,
+    selected: false,
   },
   {
     id: '367234548682348',
@@ -18,7 +18,7 @@ export const mockResponse: CardsType = [
     month: 'Dec',
     year: '2020',
     dateString: 'Dec 31, 2020 23:59:59',
-    editMode: false,
+    selected: false,
   },
   {
     id: '367345345248682348',
@@ -27,7 +27,7 @@ export const mockResponse: CardsType = [
     month: 'Oct',
     year: '2019',
     dateString: 'Oct 1, 2019 23:59:59',
-    editMode: false,
+    selected: false,
   },
 ];
 export const DEFAULT_TIME = '23:59:59';
