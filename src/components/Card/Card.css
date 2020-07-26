@@ -10,9 +10,3 @@
 .Card.selected {
     background-color: beige;
 }
-
-.Card .icon-selected {
-    position: absolute;
-    top: calc(50% - 11px);
-    left: 0;
-}
