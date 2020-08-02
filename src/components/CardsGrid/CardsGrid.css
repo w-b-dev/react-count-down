@@ -1,5 +1,10 @@
 .CardsGrid {
-    background-color: lightgray;
+  background-color: lightgray;
+  width: 80vw;
 }
 
-/* @media all and (min-width: 1024px) {} */
+@media all and (max-width: 480px) {
+  .CardsGrid {
+    width: 100vw;
+  }
+}
